@@ -24,7 +24,6 @@ class UserSearch extends User
   }
 
   /*123*/
-
   /**
    * @inheritdoc
    */

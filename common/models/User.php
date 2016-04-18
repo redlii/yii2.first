@@ -28,6 +28,20 @@ class User extends ActiveRecord implements IdentityInterface
   const STATUS_ACTIVE = 10;
 
   /**
+   * @inheritdoc
+   */
+
+  public function behaviors()
+  {
+    return [
+      TimestampBehavior::className(),
+      'image' => [
+        'class' => 'rico\yii2images\behaviors\ImageBehave',
+      ]
+    ];
+  }
+
+  /**
    * @var array EAuth attributes
    */
   public $profile;
@@ -40,15 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
     return '{{%user}}';
   }
 
-  /**
-   * @inheritdoc
-   */
-  public function behaviors()
-  {
-    return [
-      TimestampBehavior::className(),
-    ];
-  }
+
 
   /**
    * @inheritdoc

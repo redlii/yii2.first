@@ -128,20 +128,18 @@ class UserController extends Controller
   public function actionProfile()
   {
     $model = ($model = Profile::findOne(yii::$app->user->id)) ? $model : new Profile();
-    /*echo var_dump($model->gender);*/
     if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
       /*Download immage avatar*/
-
       $model->avatar = UploadedFile::getInstance($model, 'avatar');
       if ($model->avatar) {
         $model->avatar->saveAs('D:/xammp/htdocs/yii2.first/advanced/uploads/' . $model->avatar->baseName . '.' . $model->avatar->extension);
       }
-   /*   if ($model->avatar) {
-        $path = yii::getAlias('@webroot/upload/files/').$model->avatar->baseName.'.'.$model->avatar->extension;
-        $model->image->saveAs($path);
-        $model->attachImage($path);
-      }*/
+      if ($model->avatar) {
+        $path = yii::getAlias('@webroot/upload/files/') . $model->avatar->baseName . '.' . $model->avatar->extension;
+        $model->avatar->saveAs($path);
+        /*$model->attachImage($path);*/
+      }
       /*Profile update*/
       if ($model->updateProfile()) {
         Yii::$app->session->setFlash('success', 'Профиль изменён');

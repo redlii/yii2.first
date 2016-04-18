@@ -43,4 +43,15 @@ use kartik\date\DatePicker;
 
   <?php ActiveForm::end(); ?>
 
+  <p>Name</p>
+  <h4><?=$model->first_name ?></h4>
+  <p>Second name</p>
+  <h4><?=$model->second_name ?></h4>
+  <p>Last name</p>
+  <h4><?=$model->middle_name ?></h4>
+  <p>Birthday</p>
+  <h4><?=$model->birthday ?></h4>
+  <p>Gender</p>
+  <h4><?=$model->gender ?></h4>
+
 </div><!-- main-profile -->

@@ -85,7 +85,6 @@ class Profile extends ActiveRecord
 		$profile->middle_name = $this->middle_name;
 		$profile->birthday = $this->birthday;
 		$profile->gender = $this->gender;
-		/* return $profile->save()?true:false;*/
 		if (isset(yii::$app->user->id)) {
 			$result = $profile->save();
 			return $result;
